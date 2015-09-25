@@ -1,7 +1,7 @@
 {
-  "name": "fluxible-template",
+  "name": "restfull",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "main": "start.js",
   "scripts": {
     "build": "webpack & webpack --config webpack.config.production.js",
