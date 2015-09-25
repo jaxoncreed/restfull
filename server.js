@@ -21,7 +21,7 @@ var env = process.env.NODE_ENV;
 var debug = debugLib('fluxible-template');
 
 var server = express();
-server.use('/public', express.static(path.join(__dirname, '/build')));
+server.use('/public', express.static(path.join(__dirname, '/public')));
 server.use(compression());
 
 server.use(function(req, res, next) {

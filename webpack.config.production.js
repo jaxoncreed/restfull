@@ -9,7 +9,7 @@ var webpackConfig = {
         './client.js'
     ],
     output: {
-        path: path.resolve('./build/js'),
+        path: path.resolve('./public/js'),
         publicPath: '/public/js/',
         filename: 'main.min.js'
     },
