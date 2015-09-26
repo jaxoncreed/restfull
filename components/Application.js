@@ -1,7 +1,8 @@
 /*globals document*/
 
 var React = require('react');
-var Nav = require('./Nav');
+var Header = require('./Header');
+var Footer = require('./Footer');
 var ApplicationStore = require('../stores/ApplicationStore');
 var connectToStores = require("fluxible-addons-react").connectToStores;
 var provideContext = require('fluxible-addons-react').provideContext;
@@ -12,9 +13,12 @@ var Application = React.createClass({
         var Handler = this.props.currentRoute.get('handler');
 
         return (
-            <div>
-                <Nav selected={this.props.currentPageName} links={this.props.pages} />
-                <Handler />
+            <div className="restfull-site-container">
+                <Header />
+                <div className="restfull-content">
+                    <Handler />
+                </div>
+                <Footer />
             </div>
         );
     },

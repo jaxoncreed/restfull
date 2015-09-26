@@ -1,3 +1,78 @@
+
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,700,400);
+
+html {
+    height: 100%; 
+    margin: 0px; 
+    padding: 0px;
+}
 body {
-    background-color: red;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: #56AAFF;
+    -webkit-appearance:none;
+    font-family: 'Open Sans', sans-serif;
+}
+h1 {
+    font-weight: 300;
+}
+.no-link a:link, .no-link a:visited, .no-link a:hover, .no-link a:active {
+    text-decoration: none;
+}
+
+
+.restfull-site-container {
+    position: relative;
+    bottom 0px;
+    background-color: #DDD;
+}
+
+/* Header */
+.restfull-header {
+    position: relative;
+    background-color: #56AAFF;
+    height: 70px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+}
+.restfull-header-item {
+    height: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.restfull-header h1 {
+    margin-top: 12px;
+    color: #EEE;
+}
+
+/* Content */
+.restfull-content {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+/* Footer */
+.restfull-footer {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: -100px;
+    height: 100px;
+    background-color: #56AAFF;
+    box-sizing: border-box;
+    padding: 30px;
+    color: #EEE;
+    z-index: 100;
+}
+
+/* Home */
+.restfull-home h1 {
+    padding-top: 100px;
+    padding-bottom: 500px;
+    text-align: center;
+
 }
