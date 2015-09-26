@@ -15,10 +15,10 @@ var General = React.createClass({
             <div>
                 <p>General</p>
                 <label for="repoName">Repo Name</label>
-                <input type="text"  id="repoName" ref="repoName" onChange={this.updateInfo.bind(null, ['repoName'])} />
+                <input type="text"  id="repoName" ref="repoName" value={this.props.request.repoName} onChange={this.updateInfo.bind(null, ['repoName'])} />
 
                 <label for="repoDescription">Repo Name</label>
-                <input type="text"  id="repoDescription" ref="repoDescription" onChange={this.updateInfo.bind(null, ['repoDescription'])} />
+                <input type="text"  id="repoDescription" ref="repoDescription" value={this.props.request.repoDescription} onChange={this.updateInfo.bind(null, ['repoDescription'])} />
                 <p>{this.props.request.repoName}</p>
             </div>
         );
