@@ -14,32 +14,32 @@ POST: http://localhost:3000/create
     "database": "mongo",
     "schemas": [
         {
-            name: "Song",
-            attributes: {
-                name: {
-                    type: "string",
-                    required: true,
+            "name": "Song",
+            "attributes": {
+                "name": {
+                    "type": "string",
+                    "required": true
                 },
-                description: {
-                    type: "string"
+                "description": {
+                    "type": "string"
                 }
             }
         },
         {
-            name: "Album"
-            attributes: {
-                name: {
-                    type: "string",
-                    required: true,
+            "name": "Album",
+            "attributes": {
+                "name": {
+                    "type": "string",
+                    "required": true
                 },
-                description: {
-                    type: "string",
+                "description": {
+                    "type": "string"
                 },
-                thumbnail: {
-                    type: "string"
+                "thumbnail": {
+                    "type": "string"
                 },
-                songs: {
-                    collection: "song"
+                "songs": {
+                    "collection": "song"
                 }
             }
         }
