@@ -20,12 +20,29 @@ var env = process.env.NODE_ENV;
 var bodyParser = require('body-parser');
 var handler = require('./generatorHandler/handler');
 
+var config = require('./config');
+
+var passport = require('passport');
+var GithubStrategy = require('passport-github');
 var Github = require('github-api');
-var github = new Github({
-    username: 'restfull-test',  // need input here
-    password: 'radpassword11',  // need input here
-    auth: 'basic'
-});
+var github;
+var user;
+
+passport.use(new GithubStrategy({
+    clientID: config.client_id,
+    clientSecret: config.client_secret,
+    callbackURL: config.callback_url
+    },
+    function(accessToken, refreshToken, profile, done) {
+        console.log(profile);
+        github = new Github({
+            token: accessToken,
+            auth: 'oauth'
+        });
+        user = profile.username;
+        return done();
+    }
+));
 
 var debug = debugLib('fluxible-template');
 
@@ -72,22 +89,28 @@ server.use(function(req, res, next) {
 });
 
 // authentication 
-server.get('/login', function(req, res) {
-        // not handled
+server.get('/login', passport.authenticate('github'));
+server.get('/auth/github/callback', 
+    passport.authenticate('github', { failureRedirect: '/' }),
+    function(req, res) {
+        res.redirect('/');
     }
 );
 
+
 // create repo
 server.get('/create_repo', function(req, res){
+    if(!github) { res.redirect('/') }  // user not logged in
     var user = github.getUser();
-    user.createRepo({ 'name': 'test' },  // put repo name here
+    user.createRepo({ 'name': 'rest-test' },  // put repo name here
         function(err, res) { if(err) console.log(err) });
     res.end();
 });
 
 // push to repo
 server.get('/push_repo', function(req, res) {
-    var repo = github.getRepo('restfull-test', 'test');  // repo name and username go here
+    if(!github) { res.redirect('/') }  // user not logged in
+    var repo = github.getRepo(user, 'rest-test');
     repo.write('master', 'server.js', 'new contents', 'commit message', function(err) { console.log(err) });
     res.end();  // branch   file        file contents?    commit message
 })
