@@ -35,13 +35,53 @@ POST: http://localhost:3000/create
                 "description": {
                     "type": "string"
                 },
-                "thumbnail": {
-                    "type": "string"
+                "artist": {
+                    "type": "Artist"
                 },
                 "songs": {
-                    "collection": "song"
+                    "type": "Song",
+                    "collection": true
                 }
             }
+        },
+        {
+            "name": "Artist",
+            "attributes": {
+                "name": {
+                    "type": "string",
+                    "required": "true"
+                },
+                "age": {
+                    "type": "integer"
+                }
+            }
+        }
+    ]
+}
+
+
+
+
+
+{
+    "name": "Wiggity Wack",
+    "description":"This album be wiggity wack!",
+    "artist": {
+        "name":"Joe Shmo",
+        "age":65
+    },
+    "songs": [
+        {
+            "name": "Happy Birthday",
+            "description": "What you sing on someone's special day"
+        },
+        {
+            "name": "ABC",
+            "description": "Learn your alphabet"
+        },
+        {
+            "name": "Itsy Bitsy Spider",
+            "description": "Oh no, there seems to be rain in the forecast."
         }
     ]
 }
