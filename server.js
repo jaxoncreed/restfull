@@ -20,10 +20,19 @@ var env = process.env.NODE_ENV;
 var bodyParser = require('body-parser');
 var handler = require('./generatorHandler/handler');
 
+var config = require('./config');
+var Github = require('github-api');
+var github = new Github({
+    username: 'restfull-test',  // need input here
+    password: 'radpassword11',  // need input here
+    auth: 'basic'
+});
+
 var debug = debugLib('fluxible-template');
 
 var server = express();
 server.use(bodyParser.json())
+
 server.use('/public', express.static(path.join(__dirname, '/public')));
 server.use(compression());
 
@@ -62,6 +71,27 @@ server.use(function(req, res, next) {
         res.end();
     });
 });
+
+// authentication 
+server.get('/login', function(req, res) {
+        // not handled
+    }
+);
+
+// create repo
+server.get('/create_repo', function(req, res){
+    var user = github.getUser();
+    user.createRepo({ 'name': 'test' },  // put repo name here
+        function(err, res) { if(err) console.log(err) });
+    res.end();
+});
+
+// push to repo
+server.get('/push_repo', function(req, res) {
+    var repo = github.getRepo('restfull-test', 'test');  // repo name and username go here
+    repo.write('master', 'server.js', 'new contents', 'commit message', function(err) { console.log(err) });
+    res.end();  // branch   file        file contents?    commit message
+})
 
 var port = process.env.PORT || 3000;
 server.listen(port);
