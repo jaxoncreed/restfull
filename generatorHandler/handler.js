@@ -15,6 +15,7 @@ module.exports = function(req, res, next) {
             // TODO: Handle Error
             console.log(err);
         }
+        
         res.send("It's good."); 
     });
     // Run the main generator for that folder
