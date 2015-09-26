@@ -20,7 +20,6 @@ var env = process.env.NODE_ENV;
 var bodyParser = require('body-parser');
 var handler = require('./generatorHandler/handler');
 
-var config = require('./config');
 var Github = require('github-api');
 var github = new Github({
     username: 'restfull-test',  // need input here
