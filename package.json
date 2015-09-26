@@ -36,7 +36,7 @@
     "bundle-loader": "^0.5.0",
     "eslint": "^0.24.0",
     "json-loader": "^0.5.1",
-    "nodemon": "^1.2.1",
+    "nodemon": "^1.7.1",
     "react-hot-loader": "^1.2.8",
     "webpack": "^1.4.12",
     "webpack-dev-server": "^1.6.5"
