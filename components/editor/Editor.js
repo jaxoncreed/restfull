@@ -6,7 +6,7 @@ var Publish = require('./Publish');
 var Editor = React.createClass({
     getInitialState: function() {
         return {
-            form: General
+            form: Schemas
         }
     },
     changeForm: function(component) {
