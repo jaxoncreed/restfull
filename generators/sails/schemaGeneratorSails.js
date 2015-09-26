@@ -11,18 +11,18 @@ module.exports = function(folder, info, callback) {
         if (!model[schema.name]) {
             model[schema.name] = {};
         }
-        Object.keys(schema.attributes).forEach(function(key) {
-            model[schema.name][key] = schema.attributes[key];
-            if (acceptedTypes.indexOf(model[schema.name][key].type) === -1) {
-                model[schema.name][key].model = model[schema.name][key].type;
-                delete model[schema.name][key].type;
+        schema.attributes.forEach(function(attribute) {
+            model[schema.name][attribute.key] = attribute;
+            if (acceptedTypes.indexOf(model[schema.name][attribute.key].type) === -1) {
+                model[schema.name][attribute.key].model = model[schema.name][attribute.key].type;
+                delete model[schema.name][attribute.key].type;
             }
-            if (model[schema.name][key].collection) {
-                var type = (model[schema.name][key].model) ? model[schema.name][key].model : model[schema.name][key].type;
-                model[schema.name][key].collection = type;
-                model[schema.name][key].via = schema.name;
-                delete model[schema.name][key].model;
-                delete model[schema.name][key].type;
+            if (model[schema.name][attribute.key].collection) {
+                var type = (model[schema.name][attribute.key].model) ? model[schema.name][attribute.key].model : model[schema.name][attribute.key].type;
+                model[schema.name][attribute.key].collection = type;
+                model[schema.name][attribute.key].via = schema.name;
+                delete model[schema.name][attribute.key].model;
+                delete model[schema.name][attribute.key].type;
                 if (!model[type]) {
                     model[type] = {};
                 }
@@ -33,6 +33,7 @@ module.exports = function(folder, info, callback) {
             }
         });
     });
+    console.log(model);
 
 
     var execution = info.schemas.map(function(schema) {

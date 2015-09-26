@@ -44,7 +44,8 @@ var RequestStore = createStore({
             autoIncrement: false,
             unique: false,
             primaryKey: false,
-            required: false
+            required: false,
+            collection: false
         });
         this.emitChange();
     },
