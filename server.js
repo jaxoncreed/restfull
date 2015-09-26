@@ -17,12 +17,15 @@ var HtmlComponent = require('./components/Html');
 var { createElementWithContext } = require('fluxible-addons-react');
 var htmlComponent = React.createFactory(HtmlComponent);
 var env = process.env.NODE_ENV;
+var handler = require('./generatorHandler/handler');
 
 var debug = debugLib('fluxible-template');
 
 var server = express();
 server.use('/public', express.static(path.join(__dirname, '/public')));
 server.use(compression());
+
+server.post('/create', handler);
 
 server.use(function(req, res, next) {
     var context = app.createContext();
