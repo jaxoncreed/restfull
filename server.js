@@ -17,11 +17,13 @@ var HtmlComponent = require('./components/Html');
 var { createElementWithContext } = require('fluxible-addons-react');
 var htmlComponent = React.createFactory(HtmlComponent);
 var env = process.env.NODE_ENV;
+var bodyParser = require('body-parser');
 var handler = require('./generatorHandler/handler');
 
 var debug = debugLib('fluxible-template');
 
 var server = express();
+server.use(bodyParser.json())
 server.use('/public', express.static(path.join(__dirname, '/public')));
 server.use(compression());
 
