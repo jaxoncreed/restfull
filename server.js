@@ -18,29 +18,31 @@ var { createElementWithContext } = require('fluxible-addons-react');
 var htmlComponent = React.createFactory(HtmlComponent);
 var env = process.env.NODE_ENV;
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var methodOverride = require('method-override');
+var session = require('express-session');
 var handler = require('./generatorHandler/handler');
 
 var config = require('./config');
 
+/* Passport Stuff */
 var passport = require('passport');
 var GithubStrategy = require('passport-github');
 var Github = require('github-api');
-var github;
-var user;
 
-passport.use(new GithubStrategy({
-    clientID: config.client_id,
-    clientSecret: config.client_secret,
-    callbackURL: config.callback_url
-    },
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+passport.use(new GithubStrategy(config, 
     function(accessToken, refreshToken, profile, done) {
-        console.log(profile);
-        github = new Github({
-            token: accessToken,
-            auth: 'oauth'
+        process.nextTick(function () {
+            return done(null, accessToken);
         });
-        user = profile.username;
-        return done();
     }
 ));
 
@@ -51,6 +53,11 @@ server.use(bodyParser.json())
 
 server.use('/public', express.static(path.join(__dirname, '/public')));
 server.use(compression());
+server.use(cookieParser());
+server.use(methodOverride());
+server.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+server.use(passport.initialize());
+server.use(passport.session());
 
 server.post('/create', handler);
 
@@ -88,32 +95,14 @@ server.use(function(req, res, next) {
     });
 });
 
-// authentication 
+// github authentication 
 server.get('/login', passport.authenticate('github'));
 server.get('/auth/github/callback', 
     passport.authenticate('github', { failureRedirect: '/' }),
     function(req, res) {
-        res.redirect('/');
+        res.redirect('/editor');
     }
 );
-
-
-// create repo
-server.get('/create_repo', function(req, res){
-    if(!github) { res.redirect('/') }  // user not logged in
-    var user = github.getUser();
-    user.createRepo({ 'name': 'rest-test' },  // put repo name here
-        function(err, res) { if(err) console.log(err) });
-    res.end();
-});
-
-// push to repo
-server.get('/push_repo', function(req, res) {
-    if(!github) { res.redirect('/') }  // user not logged in
-    var repo = github.getRepo(user, 'rest-test');
-    repo.write('master', 'server.js', 'new contents', 'commit message', function(err) { console.log(err) });
-    res.end();  // branch   file        file contents?    commit message
-})
 
 var port = process.env.PORT || 3000;
 server.listen(port);
