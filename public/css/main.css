@@ -19,6 +19,9 @@ body {
 h1 {
     font-weight: 300;
 }
+a {
+    text-decoration: none;
+}
 .no-link a:link, .no-link a:visited, .no-link a:hover, .no-link a:active {
     text-decoration: none !important;
 }
@@ -65,9 +68,9 @@ h1 {
 /* big logo */
 .header-logo {
     position: absolute;
-    top: 50px;
+    top: 10%;
     padding-left: 45%;
-    padding-right: 0%;
+    padding-right: 5%;
     left: 0px;
     right: 0px;
     margin: auto;
@@ -126,7 +129,7 @@ h1 {
 /* Home */
 .restfull-home h1 {
     padding-top: 100px;
-    padding-bottom: 500px;
+    padding-bottom: 650px;
     text-align: center;
 }
 
@@ -144,7 +147,7 @@ h1 {
 
 .restfull-editor-nav {
     position: relative;
-    height: 70px;
+    height: 75px;
     width: 100%;
     background-color: #333;
     overflow: hidden;
@@ -181,14 +184,18 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    margin-top: 20px;
     text-align: center;
+    background-color: #fff;
 }
 
 .restfull-editor-schema {
     float: left;
     height: 50px;
     border-radius: 25px;
-    background-color: red;
+    background-color: #667588;
+    color: #e4e4e4;
+    border-bottom: #404c5a 3px solid;
     padding: 14px;
     margin-right: 5px;
     margin-left: 5px;
@@ -196,16 +203,21 @@ h1 {
     cursor: pointer;
 }
 .restfull-editor-schema-new {
-    background-color: green !important;
+    background-color: #8FAB71 !important;
+    border-bottom: #6F8D4F 3px solid;
+    color: #111;
 }
 .restfull-editor-schema-selected {
-    background-color: blue !important;
+    background-color: #a8b7ca !important;
+    border-bottom: none;
+    color: #111;
 }
 .restfull-editor-publish {
     height: 400px;
     padding: 200px;
 }
-.restfull-editor-publish h1 {
+.restfull-editor-publish-text {
+    font-family: 'Bad Script', sans-serif;
     text-align: center;
-    margin-left: 0px !important;
+    font-size: 100px;
 }

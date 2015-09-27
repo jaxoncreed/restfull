@@ -15,18 +15,18 @@ var Publish = React.createClass({
         var content;
         if (this.props.step === 1) {
             content = (
-                <div className="o-circle-button center" onClick={this.publish}>
+                <div className="o-circle-button center big-button" onClick={this.publish}>
                     Publish
                 </div>
             )
         } else if (this.props.step === 2) {
             content = (
-                <h1>Publishing...</h1>
+                <h1 className="restfull-editor-publish-text">Publishing...</h1>
             )
         } else {
             content = (
                 <span>
-                <h1>Done!</h1>
+                <h1 className="restfull-editor-publish-text">Done!</h1>
                     <a href={this.props.url}><div className="o-circle-button center">
                         See Repo
                     </div></a>

@@ -54,7 +54,7 @@ var Schemas = React.createClass({
         return (
             <div>
                 <h1>Database Schemas and RESTful End-Points</h1>
-                <div className="restfull-editor-section-center">
+                <div className="restfull-editor-section"><div className="restfull-editor-section-center">
                     {this.props.request.schemas.map(function(schema, index) {
                         var tabClass = "restfull-editor-schema";
                         if (index === this.state.schemaIndex) {
@@ -64,7 +64,7 @@ var Schemas = React.createClass({
                     }.bind(this))}
                     <div className="restfull-editor-schema restfull-editor-schema-new" onClick={this.addSchema}>New Schema</div>
                     <div className="clear"></div>
-                </div>
+                </div></div>
 
                 <div className="restfull-editor-section"><div className="restfull-editor-section-center">
                     <label for="schemaName">Schema Name</label>

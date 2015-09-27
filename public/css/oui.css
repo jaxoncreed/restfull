@@ -3,6 +3,16 @@
     clear: both;
 }
 
+/* Header Raccoon */
+.header-image img {
+    width: 250px;
+    height: auto;
+    position: fixed;
+    right: 50px;
+    top: 10px;
+    z-index: 200;
+}
+
 /* Circle Button */
 .o-circle-button {
     width: 100px;
@@ -17,10 +27,16 @@
     transition: all 0.05s ease-in;
     transition-property: color, background-color;
     text-align: center;
+    text-decoration: none;
+}
+.big-button {
+    width: 400px;
+    height: 400px;
+    font-size: 40px;
 }
 .o-circle-button:hover {
-    color: #EEE;
-    background-color: #333;
+    color: #e4e4e4;
+    background-color: #6F8D4F;
 }
 
 /* Text Box */
@@ -39,12 +55,12 @@ input[type="text"] {
     padding-left: 20px;
     padding-right: 20px;
     box-sizing: border-box;
-    border-bottom: #AAA 3px solid;
+    border-bottom: #6F8D4F 3px solid;
     transition: border-bottom 0.15s;
 }
 input[type="text"]:focus {
   outline: none;
-  border-bottom: #555 3px solid;
+  border-bottom: #667588 3px solid;
 }
 
 select {
@@ -60,9 +76,9 @@ select {
     background-color: #EEE;
     border-radius: 50px;
     padding-left: 20px;
-    height: 40px;
+    height: 50px;
     padding-bottom: 10px;
     box-sizing: border-box;
-    border-bottom: #AAA 3px solid;
+    border-bottom: #6F8D4F 3px solid;
     transition: border-bottom 0.15s;
 }
