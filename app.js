@@ -12,5 +12,6 @@ var app = new Fluxible({
 app.registerStore(RouteStore);
 app.registerStore(ApplicationStore);
 app.registerStore(require('./stores/RequestStore'));
+app.registerStore(require('./stores/PublishStore'));
 
 module.exports = app;

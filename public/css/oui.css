@@ -16,6 +16,7 @@
     cursor: pointer;
     transition: all 0.05s ease-in;
     transition-property: color, background-color;
+    text-align: center;
 }
 .o-circle-button:hover {
     color: #EEE;

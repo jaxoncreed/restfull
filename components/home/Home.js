@@ -11,7 +11,7 @@ var Home = React.createClass({
                 </div>
                 <div className='header-direction'>
                 	<div className='header-smalltext'>Build your Back-End in Minutes!</div><br />
-                	<button className='login-button'>Let's get started!</button>
+                	<a href='/login'><div className='o-circle-button center no-link'>Let's get started!</div></a>
                 </div>
             </div>
         );

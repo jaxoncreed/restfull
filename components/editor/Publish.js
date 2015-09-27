@@ -1,6 +1,7 @@
 var React = require('react');
 var connectToStores = require("fluxible-addons-react").connectToStores;
 var RequestStore = require('../../stores/RequestStore');
+var PublishStore = require('../../stores/PublishStore');
 var publishAction = require('../../actions/PublishAction');
 
 var Publish = React.createClass({
@@ -11,13 +12,25 @@ var Publish = React.createClass({
         this.context.executeAction(publishAction, this.props.request);
     },
     render: function() {
-        return (
-            <div>
-                <p>Publish</p>
-                <p>{JSON.stringify(this.props.request, null, 4)}</p>
-                <div className="o-circle-button" onClick={this.publish}>
+        var content;
+        if (this.props.step === 1) {
+            content = (
+                <div className="o-circle-button center" onClick={this.publish}>
                     Publish
                 </div>
+            )
+        } else if (this.props.step === 2) {
+            content = (
+                <h1>Publishing...</h1>
+            )
+        } else {
+            content = (
+                <h1>Done!</h1>
+            )
+        }
+        return (
+            <div className="restfull-editor-publish">
+                {content}
             </div>
         );
     }
@@ -25,10 +38,11 @@ var Publish = React.createClass({
 
 module.exports = connectToStores(
     Publish,
-    [RequestStore],
+    [RequestStore, PublishStore],
     function (context, props) {
         return {
-            request: context.getStore(RequestStore).getRequest()
+            request: context.getStore(RequestStore).getRequest(),
+            step: context.getStore(PublishStore).getStep()
         }
     }
 );
