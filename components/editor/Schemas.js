@@ -45,39 +45,44 @@ var Schemas = React.createClass({
         return (
             <div>
                 <h1>Database Schemas and RESTful End-Points</h1>
-                <ul>
+                <div className="restfull-editor-section-center">
                     {this.props.request.schemas.map(function(schema, index) {
-                        return (<li onClick={this.changeSchemaIndex.bind(null, index)}>{schema.name}</li>);
+                        var tabClass = "restfull-editor-schema";
+                        if (index === this.state.schemaIndex) {
+                            tabClass = "restfull-editor-schema restfull-editor-schema-selected";
+                        }
+                        return (<div className={tabClass} onClick={this.changeSchemaIndex.bind(null, index)}>{schema.name}</div>);
                     }.bind(this))}
-                    <li onClick={this.addSchema}>New Schema</li>
-                </ul>
+                    <div className="restfull-editor-schema restfull-editor-schema-new" onClick={this.addSchema}>New Schema</div>
+                    <div className="clear"></div>
+                </div>
 
-                {this.state.schemaIndex}
+                <div className="restfull-editor-section"><div className="restfull-editor-section-center">
+                    <label for="schemaName">Schema Name</label>
+                    <input type="text"  id="schemaName" ref="schemaName" value={this.props.request.schemas[this.state.schemaIndex].name} onChange={this.updateInfo.bind(null, ['schemas', this.state.schemaIndex, 'name'])} />
+                </div></div>
 
-                <label for="schemaName">Schema Name</label>
-                <input type="text"  id="schemaName" ref="schemaName" value={this.props.request.schemas[this.state.schemaIndex].name} onChange={this.updateInfo.bind(null, ['schemas', this.state.schemaIndex, 'name'])} />
-
-                    {this.props.request.schemas[this.state.schemaIndex].attributes.map(function(attribute, attrIndex) {
-                        return (
-                            <div>
-                                <label for="attributeKey">Key</label>
-                                <input type="text"  id="attributeKey" ref="attributeKey" value={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].key} onChange={this.updateInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'key'])} />
-                                <label for="attributeType">Type</label>
-                                <select id="attributeType" ref="attributeType" value={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].type} onChange={this.updateInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'type'])}>
-                                    {this.state.allowedTypes.map(function(type) {
-                                        return (<option value={type}>{type}</option>);
-                                    }.bind(this))}
-                                </select>
-                                <input type="checkbox" id="required" ref="required" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].required} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'required'])}>Is Required</input>
-                                <input type="checkbox" id="primaryKey" ref="primaryKey" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].primaryKey} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'primaryKey'])}>Is Primary Key</input>
-                                <input type="checkbox" id="unique" ref="unique" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].unique} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'unique'])}>Is Unique</input>
-                                <input type="checkbox" id="autoIncrement" ref="autoIncrement" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].autoIncrement} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'autoIncrement'])}>Auto-Increments</input>
-                                <input type="checkbox" id="collection" ref="collection" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].collection} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'collection'])}>Collection of Items</input>
-                            </div>
-                        );
-                    }.bind(this))}
+                {this.props.request.schemas[this.state.schemaIndex].attributes.map(function(attribute, attrIndex) {
+                    return (
+                        <div className="restfull-editor-section"><div className="restfull-editor-section-center">
+                            <label for="attributeKey">Key</label>
+                            <input type="text"  id="attributeKey" ref="attributeKey" value={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].key} onChange={this.updateInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'key'])} />
+                            <label for="attributeType">Type</label>
+                            <select id="attributeType" ref="attributeType" value={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].type} onChange={this.updateInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'type'])}>
+                                {this.state.allowedTypes.map(function(type) {
+                                    return (<option value={type}>{type}</option>);
+                                }.bind(this))}
+                            </select>
+                            <input type="checkbox" id="required" ref="required" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].required} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'required'])}>Is Required</input>
+                            <input type="checkbox" id="primaryKey" ref="primaryKey" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].primaryKey} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'primaryKey'])}>Is Primary Key</input>
+                            <input type="checkbox" id="unique" ref="unique" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].unique} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'unique'])}>Is Unique</input>
+                            <input type="checkbox" id="autoIncrement" ref="autoIncrement" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].autoIncrement} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'autoIncrement'])}>Auto-Increments</input>
+                            <input type="checkbox" id="collection" ref="collection" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].collection} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'collection'])}>Collection of Items</input>
+                        </div></div>
+                    );
+                }.bind(this))}
                 
-                <div className="o-circle-button" onClick={this.addAttribute}>
+                <div className="o-circle-button restfull-editor-add-attribute" onClick={this.addAttribute}>
                     Add New Attribute
                 </div>
             </div>

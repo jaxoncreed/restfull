@@ -1,6 +1,7 @@
 var requester = require('superagent');
 
 module.exports = function(context, payload, callback) {
+    context.dispatch('NEXT_STEP');
     requester
         .post('/create')
         .send(payload)
@@ -9,6 +10,7 @@ module.exports = function(context, payload, callback) {
             console.log(err);
             console.log("Res");
             console.log(res);
+            context.dispatch('NEXT_STEP');
             callback();
         });
 }
