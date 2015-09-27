@@ -22,6 +22,9 @@ h1 {
 .no-link a:link, .no-link a:visited, .no-link a:hover, .no-link a:active {
     text-decoration: none;
 }
+.clear {
+    clear: both;
+}
 
 
 .restfull-site-container {
@@ -114,5 +117,47 @@ h1 {
     padding-top: 100px;
     padding-bottom: 500px;
     text-align: center;
+}
 
+/* Editor */
+.restfull-editor input, .restfull-editor select {
+    margin-bottom: 20px !important;
+}
+.restfull-editor h1 {
+    margin-left: 20px !important;
+}
+
+.restfull-editor-nav {
+    position: relative;
+    height: 70px;
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+}
+
+.restfull-editor-nav-container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 360px;
+}
+
+.restfull-editor-nav-button {
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: -17px;
+}
+
+.restfull-editor-section {
+    position: relative;
+    background-color: #FFF;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.restfull-editor-section-center {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
 }

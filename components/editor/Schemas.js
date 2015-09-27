@@ -44,7 +44,7 @@ var Schemas = React.createClass({
     render: function() {
         return (
             <div>
-                <p>Schemas</p>
+                <h1>Database Schemas and RESTful End-Points</h1>
                 <ul>
                     {this.props.request.schemas.map(function(schema, index) {
                         return (<li onClick={this.changeSchemaIndex.bind(null, index)}>{schema.name}</li>);

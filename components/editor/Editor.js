@@ -15,16 +15,21 @@ var Editor = React.createClass({
     render: function() {
         var Form = this.state.form;
         return (
-            <div>
-                <div className="o-circle-button" onClick={this.changeForm.bind(null, General)}>
-                    General
-                </div>
-                <div className="o-circle-button" onClick={this.changeForm.bind(null, Schemas)}>
-                    Schemas
-                </div>
-                <div className="o-circle-button" onClick={this.changeForm.bind(null, Publish)}>
-                    Publish
-                </div>
+            <div className="restfull-editor">
+                <nav className="restfull-editor-nav">
+                    <div className="restfull-editor-nav-container">
+                        <div className="o-circle-button restfull-editor-nav-button" onClick={this.changeForm.bind(null, General)}>
+                            General
+                        </div>
+                        <div className="o-circle-button restfull-editor-nav-button" onClick={this.changeForm.bind(null, Schemas)}>
+                            Schemas
+                        </div>
+                        <div className="o-circle-button restfull-editor-nav-button" onClick={this.changeForm.bind(null, Publish)}>
+                            Publish
+                        </div>
+                        <div className="clear"></div>
+                    </div>
+                </nav>
                 <Form />
             </div>
         );

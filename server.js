@@ -41,7 +41,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GithubStrategy(config, 
     function(accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
-            return done(null, accessToken);
+            return done(null, { accessToken: accessToken, profile: profile });
         });
     }
 ));
@@ -96,7 +96,7 @@ server.use(function(req, res, next) {
 });
 
 // github authentication 
-server.get('/login', passport.authenticate('github', { scope: ['repo'] }));
+server.get('/login', passport.authenticate('github', { scope: ['repo', 'repo:status', 'repo_deployment'] }));
 server.get('/auth/github/callback', 
     passport.authenticate('github', { failureRedirect: '/' }),
     function(req, res) {
