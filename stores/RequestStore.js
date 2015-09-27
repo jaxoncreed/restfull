@@ -6,8 +6,9 @@ var RequestStore = createStore({
     handlers: {
         'INFORMATION_UPDATE': 'handleInformationUpdate',
         'SCHEMA_ADDED': 'handleAddSchema',
-        //'REMOVE_SCHEMA': 'handleRemoveSchema'
-        'ATTRIBUTE_ADDED': 'handleAddAttribute'
+        'SCHEMA_REMOVED': 'handleRemoveSchema',
+        'ATTRIBUTE_ADDED': 'handleAddAttribute',
+        'ATTRIBUTE_REMOVED': 'handleRemoveAttribute'
     },
     initialize: function (dispatcher) {
         this.request = {
@@ -37,6 +38,10 @@ var RequestStore = createStore({
         console.log(this.request);
         this.emitChange();
     },
+    handleRemoveSchema: function(index) {
+        this.request.schemas.splice(index, 1);
+        this.emitChange();
+    },
     handleAddAttribute: function(payload) {
         this.request.schemas[payload.schemaIndex].attributes.push({
             key: "",
@@ -47,6 +52,10 @@ var RequestStore = createStore({
             required: false,
             collection: false
         });
+        this.emitChange();
+    },
+    handleRemoveAttribute: function(payload) {
+        this.request.schemas[payload.schemaIndex].attributes.splice(payload.attributeIndex, 1);
         this.emitChange();
     },
     getRequest: function() {
