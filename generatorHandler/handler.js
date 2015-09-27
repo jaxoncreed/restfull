@@ -10,7 +10,9 @@ var workspace = './workspace/';
 module.exports = function(req, res, next) { 
     var body = req.body;
 
-    console.log(req.user);
+    if (!req.user) {
+        // Handle Error
+    };
 
     // Create a UUID for this process
     var uuid = uuidGen.v4();
@@ -51,7 +53,7 @@ module.exports = function(req, res, next) {
                         }
 
                         // Push folder to Github
-                        pushToGithub(folder, body, req.user, function(err) {
+                        pushToGithub(folder, body, req.user.accessToken, req.user.profile.username, function(err) {
                             if (err) {
                                 // TODO: Handle Error
                                 console.log(err);
