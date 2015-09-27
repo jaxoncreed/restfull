@@ -4,6 +4,7 @@ var fs = require('fs');
 var pushToGithub = require('./pushToGithub');
 var saveMetaData = require('./saveMetaData');
 var generatorMap = require('../generators/generatorMap');
+var rimraf = require('rimraf');
 
 var workspace = './workspace/';
 
@@ -60,7 +61,13 @@ module.exports = function(req, res, next) {
                             }
 
                             //Delete Folder
-                            res.send("It's good."); 
+                            rimraf(folder, function(err) {
+                                if (err) {
+                                    // TODO: Handle Error
+                                    console.log(err);
+                                }
+                                res.send("It's good.");
+                            }); 
                         });
                     });
                 });
