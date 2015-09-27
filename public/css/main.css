@@ -188,7 +188,9 @@ h1 {
     float: left;
     height: 50px;
     border-radius: 25px;
-    background-color: red;
+    background-color: #667588;
+    color: #e4e4e4;
+    border-bottom: #404c5a 3px solid;
     padding: 14px;
     margin-right: 5px;
     margin-left: 5px;
@@ -196,10 +198,14 @@ h1 {
     cursor: pointer;
 }
 .restfull-editor-schema-new {
-    background-color: green !important;
+    background-color: #8FAB71 !important;
+    border-bottom: #6F8D4F 3px solid;
+    color: #111;
 }
 .restfull-editor-schema-selected {
-    background-color: blue !important;
+    background-color: #a8b7ca !important;
+    border-bottom: none;
+    color: #111;
 }
 .restfull-editor-publish {
     height: 400px;
