@@ -3,7 +3,7 @@ var updateInfoAction = require('../../actions/UpdateInfoAction');
 var addSchemaAction = require('../../actions/AddSchemaAction');
 var addAttributeAction = require('../../actions/AddAttributeAction');
 var removeSchemaAction = require('../../actions/RemoveSchemaAction');
-var removeAttributeAction = require('../../actions/removeAttributeAction');
+var removeAttributeAction = require('../../actions/RemoveAttributeAction');
 var connectToStores = require("fluxible-addons-react").connectToStores;
 var RequestStore = require('../../stores/RequestStore');
 
