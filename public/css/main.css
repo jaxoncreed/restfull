@@ -63,11 +63,11 @@ h1 {
 .header-logo {
     position: absolute;
     max-width: 60%;
-    font-size: 15em;
+    font-size: 240px;
     font-weight: 700;
     font-family: 'Bad Script', sans-serif;
     color: #404c5a;
-    top: 10%;
+    top: 50px;
     left: 40%;
 }
 .logo-large {
@@ -86,16 +86,19 @@ h1 {
     position: absolute;
     text-align: center;
     top: 40%;
-    left: 10%;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    padding-right: 60%;
 }
 .header-smalltext {
-    font-size: 1.75em;
+    font-size: 30px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
 .login-button {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1em;
+    font-size: 16px;
 }
 
 /* Footer */
