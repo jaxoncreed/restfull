@@ -25,7 +25,12 @@ var Publish = React.createClass({
             )
         } else {
             content = (
+                <span>
                 <h1 className="restfull-editor-publish-text">Done!</h1>
+                    <a href={this.props.url}><div className="o-circle-button center">
+                        See Repo
+                    </div></a>
+                </span>
             )
         }
         return (
@@ -42,7 +47,8 @@ module.exports = connectToStores(
     function (context, props) {
         return {
             request: context.getStore(RequestStore).getRequest(),
-            step: context.getStore(PublishStore).getStep()
+            step: context.getStore(PublishStore).getStep(),
+            url: context.getStore(PublishStore).getUrl()
         }
     }
 );

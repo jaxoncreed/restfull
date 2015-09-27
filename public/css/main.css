@@ -170,8 +170,8 @@ a {
 .restfull-editor-section {
     position: relative;
     background-color: #FFF;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .restfull-editor-section-center {
     width: 800px;
@@ -183,8 +183,8 @@ a {
 .restfull-editor-add-attribute {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 0px;
-    margin-top: -20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     text-align: center;
     background-color: #fff;
 }

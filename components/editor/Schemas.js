@@ -1,7 +1,9 @@
 var React = require('react');
 var updateInfoAction = require('../../actions/UpdateInfoAction');
 var addSchemaAction = require('../../actions/AddSchemaAction');
-var addAttributeAction = require('../../actions/AddAttributeAction')
+var addAttributeAction = require('../../actions/AddAttributeAction');
+var removeSchemaAction = require('../../actions/RemoveSchemaAction');
+var removeAttributeAction = require('../../actions/removeAttributeAction');
 var connectToStores = require("fluxible-addons-react").connectToStores;
 var RequestStore = require('../../stores/RequestStore');
 
@@ -41,6 +43,13 @@ var Schemas = React.createClass({
     addAttribute: function() {
         this.context.executeAction(addAttributeAction, { schemaIndex: this.state.schemaIndex });
     },
+    removeSchema: function() {
+        this.context.executeAction(removeSchemaAction, this.state.schemaIndex);
+        this.setState({ schemaIndex: 0 });
+    },
+    removeAttribute: function(attributeIndex) {
+        this.context.executeAction(removeAttributeAction, { schemaIndex: this.state.schemaIndex, attributeIndex: attributeIndex });
+    },
     render: function() {
         return (
             <div>
@@ -60,6 +69,9 @@ var Schemas = React.createClass({
                 <div className="restfull-editor-section"><div className="restfull-editor-section-center">
                     <label for="schemaName">Schema Name</label>
                     <input type="text"  id="schemaName" ref="schemaName" value={this.props.request.schemas[this.state.schemaIndex].name} onChange={this.updateInfo.bind(null, ['schemas', this.state.schemaIndex, 'name'])} />
+                    <div className="o-circle-button center" onClick={this.removeSchema}>
+                        Remove Schema
+                    </div>
                 </div></div>
 
                 {this.props.request.schemas[this.state.schemaIndex].attributes.map(function(attribute, attrIndex) {
@@ -78,15 +90,16 @@ var Schemas = React.createClass({
                             <input type="checkbox" id="unique" ref="unique" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].unique} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'unique'])}>Is Unique</input>
                             <input type="checkbox" id="autoIncrement" ref="autoIncrement" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].autoIncrement} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'autoIncrement'])}>Auto-Increments</input>
                             <input type="checkbox" id="collection" ref="collection" checked={this.props.request.schemas[this.state.schemaIndex].attributes[attrIndex].collection} onChange={this.updateCheckBoxInfo.bind(null, ['schemas', this.state.schemaIndex, 'attributes', attrIndex, 'collection'])}>Collection of Items</input>
+                            <div className="o-circle-button center" onClick={this.removeAttribute.bind(null, attrIndex)}>
+                                Remove Attribute
+                            </div>
                         </div></div>
                     );
                 }.bind(this))}
                 
-                <div className="restfull-editor-section"><div className="restfull-editor-section-center">
                 <div className="o-circle-button restfull-editor-add-attribute" onClick={this.addAttribute}>
                     Add New Attribute
                 </div>
-                </div></div>
             </div>
         );
     }

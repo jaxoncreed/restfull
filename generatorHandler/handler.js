@@ -54,7 +54,7 @@ module.exports = function(req, res, next) {
                         }
 
                         // Push folder to Github
-                        pushToGithub(folder, body, req.user.accessToken, req.user.profile.username, function(err) {
+                        pushToGithub(folder, body, req.user.accessToken, req.user.profile.username, function(err, repoUrl) {
                             if (err) {
                                 // TODO: Handle Error
                                 console.log(err);
@@ -66,7 +66,8 @@ module.exports = function(req, res, next) {
                                     // TODO: Handle Error
                                     console.log(err);
                                 }
-                                res.send("It's good.");
+                                var url = "https://github.com/" + req.user.profile.username + "/" + body.repoName;
+                                res.send(url);
                             }); 
                         });
                     });
