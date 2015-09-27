@@ -86,6 +86,10 @@ h1 {
 .restfull-editor h1 {
     margin-left: 20px !important;
 }
+.restfull-editor input[type="checkbox"] {
+    margin-right: 15px;
+    margin-left: 15px;
+}
 
 .restfull-editor-nav {
     position: relative;

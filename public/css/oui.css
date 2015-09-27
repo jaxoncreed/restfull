@@ -54,7 +54,7 @@ select {
     font-size: 18px;
     appearance: none;
     box-shadow: none;
-    border-radius: none;
+    border-radius: 25px;
     padding: 10px;
     background-color: #EEE;
     border-radius: 50px;
@@ -64,4 +64,11 @@ select {
     box-sizing: border-box;
     border-bottom: #AAA 3px solid;
     transition: border-bottom 0.15s;
+}
+
+input[type="checkbox"] {
+    border: 5px solid #555;
+    appearance: none;
+    box-shadow: none;
+    background-color: red;
 }
