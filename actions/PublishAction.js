@@ -9,7 +9,8 @@ module.exports = function(context, payload, callback) {
             console.log("Error:");
             console.log(err);
             console.log("Res");
-            console.log(res);
+            console.log(res.text);
+            context.dispatch('URL_RECEIVED', res.text);
             context.dispatch('NEXT_STEP');
             callback();
         });

@@ -31,7 +31,7 @@ module.exports = function(folder, info, accessToken, userName, callback) {
 
         push.on('exit', function (code) {
           console.log('child process exited with code ' + code);
-          callback();
+          callback(null, repoUrl);
         });
     })
 }
