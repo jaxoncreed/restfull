@@ -96,7 +96,7 @@ server.use(function(req, res, next) {
 });
 
 // github authentication 
-server.get('/login', passport.authenticate('github'));
+server.get('/login', passport.authenticate('github', { scope: ['repo'] }));
 server.get('/auth/github/callback', 
     passport.authenticate('github', { failureRedirect: '/' }),
     function(req, res) {
