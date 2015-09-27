@@ -7,7 +7,7 @@ var Home = React.createClass({
                 <h1></h1>
                 <div className='header-logo'>
                 	<div className='huge-text'>RESTFULL</div>
-                	<img className='logo-large' src='/public/img/raccoon.svg' />
+                	<img className='logo-large' src='/public/img/raccoon.png' />
                 </div>
                 <div className='header-direction'>
                 	<div className='header-smalltext'>Build your Back-End in Minutes!</div><br />
