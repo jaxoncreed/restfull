@@ -14,7 +14,7 @@ var Application = React.createClass({
 
         return (
             <div className="restfull-site-container">
-                <Header />
+                <Header page={this.props.pageTitle} />
                 <div className="restfull-content">
                     <Handler />
                 </div>

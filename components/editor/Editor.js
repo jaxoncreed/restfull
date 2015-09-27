@@ -16,9 +16,7 @@ var Editor = React.createClass({
         var Form = this.state.form;
         return (
             <div className="restfull-editor">
-                <div className='header-image'>
-                    <img src='/public/img/raccoon.png' />
-                </div>
+                
                 <Form />
                 <nav className="restfull-editor-nav">
                     <div className="restfull-editor-nav-container">

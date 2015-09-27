@@ -7,10 +7,10 @@
 .header-image img {
     width: 250px;
     height: auto;
-    position: fixed;
+    position: absolute;
     right: 50px;
     top: 10px;
-    z-index: 200;
+    z-index: 300;
 }
 
 /* Circle Button */
