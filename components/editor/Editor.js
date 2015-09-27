@@ -16,6 +16,10 @@ var Editor = React.createClass({
         var Form = this.state.form;
         return (
             <div className="restfull-editor">
+                <div className='header-image'>
+                    <img src='/public/img/raccoon.png' />
+                </div>
+                <Form />
                 <nav className="restfull-editor-nav">
                     <div className="restfull-editor-nav-container">
                         <div className="o-circle-button restfull-editor-nav-button" onClick={this.changeForm.bind(null, General)}>
@@ -30,7 +34,6 @@ var Editor = React.createClass({
                         <div className="clear"></div>
                     </div>
                 </nav>
-                <Form />
             </div>
         );
     }
