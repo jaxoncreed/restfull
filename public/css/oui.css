@@ -65,10 +65,3 @@ select {
     border-bottom: #AAA 3px solid;
     transition: border-bottom 0.15s;
 }
-
-input[type="checkbox"] {
-    border: 5px solid #555;
-    appearance: none;
-    box-shadow: none;
-    background-color: red;
-}

@@ -45,12 +45,17 @@ var Schemas = React.createClass({
         return (
             <div>
                 <h1>Database Schemas and RESTful End-Points</h1>
-                <ul>
+                <div className="restfull-editor-section-center">
                     {this.props.request.schemas.map(function(schema, index) {
-                        return (<li onClick={this.changeSchemaIndex.bind(null, index)}>{schema.name}</li>);
+                        var tabClass = "restfull-editor-schema";
+                        if (index === this.state.schemaIndex) {
+                            tabClass = "restfull-editor-schema restfull-editor-schema-selected";
+                        }
+                        return (<div className={tabClass} onClick={this.changeSchemaIndex.bind(null, index)}>{schema.name}</div>);
                     }.bind(this))}
-                    <li onClick={this.addSchema}>New Schema</li>
-                </ul>
+                    <div className="restfull-editor-schema restfull-editor-schema-new" onClick={this.addSchema}>New Schema</div>
+                    <div className="clear"></div>
+                </div>
 
                 <div className="restfull-editor-section"><div className="restfull-editor-section-center">
                     <label for="schemaName">Schema Name</label>
@@ -77,7 +82,7 @@ var Schemas = React.createClass({
                     );
                 }.bind(this))}
                 
-                <div className="o-circle-button" onClick={this.addAttribute}>
+                <div className="o-circle-button restfull-editor-add-attribute" onClick={this.addAttribute}>
                     Add New Attribute
                 </div>
             </div>

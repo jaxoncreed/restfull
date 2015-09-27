@@ -165,3 +165,28 @@ h1 {
     margin-right: auto;
     padding: 20px;
 }
+
+.restfull-editor-add-attribute {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.restfull-editor-schema {
+    float: left;
+    height: 50px;
+    border-radius: 25px;
+    background-color: red;
+    padding: 14px;
+    margin-right: 5px;
+    margin-left: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.restfull-editor-schema-new {
+    background-color: green !important;
+}
+.restfull-editor-schema-selected {
+    background-color: blue !important;
+}
