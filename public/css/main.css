@@ -1,6 +1,7 @@
 
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,700,400);
+@import url(https://fonts.googleapis.com/css?family=Bad+Script);
 
 html {
     height: 100%; 
@@ -11,7 +12,7 @@ body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    background-color: #56AAFF;
+    background-color: #404c5a;
     -webkit-appearance:none;
     font-family: 'Open Sans', sans-serif;
 }
@@ -29,13 +30,13 @@ h1 {
 .restfull-site-container {
     position: relative;
     bottom 0px;
-    background-color: #DDD;
+    background-color: #e4e4e4;
 }
 
 /* Header */
 .restfull-header {
     position: relative;
-    background-color: #56AAFF;
+    background-color: #404c5a;
     height: 70px;
     z-index: 100;
     display: flex;
@@ -58,6 +59,45 @@ h1 {
     overflow: hidden;
 }
 
+/* big logo */
+.header-logo {
+    position: absolute;
+    max-width: 60%;
+    font-size: 15em;
+    font-weight: 700;
+    font-family: 'Bad Script', sans-serif;
+    color: #404c5a;
+    top: 10%;
+    left: 40%;
+}
+.logo-large {
+    position: absolute;
+    width: 1080px;
+    z-index: 100;
+    transform: rotate(1.5deg);
+}
+.huge-text {
+    position: absolute;
+    top: 168px;
+    left: 30px;
+}
+/* the part of the splash with the button */
+.header-direction {
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    left: 10%;
+}
+.header-smalltext {
+    font-size: 1.75em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+.login-button {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+}
+
 /* Footer */
 .restfull-footer {
     position: absolute;
@@ -65,7 +105,7 @@ h1 {
     right: 0px;
     bottom: -100px;
     height: 100px;
-    background-color: #56AAFF;
+    background-color: #404c5a;
     box-sizing: border-box;
     padding: 30px;
     color: #EEE;
