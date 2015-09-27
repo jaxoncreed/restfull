@@ -62,24 +62,28 @@ h1 {
 /* big logo */
 .header-logo {
     position: absolute;
-    max-width: 60%;
-    font-size: 240px;
+    top: 50px;
+    padding-left: 45%;
+    padding-right: 0%;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    font-size: 180px;
     font-weight: 700;
     font-family: 'Bad Script', sans-serif;
     color: #404c5a;
-    top: 50px;
-    left: 40%;
+    
 }
 .logo-large {
     position: absolute;
-    width: 1080px;
+    width: 800px;
+    top: 50px;
     z-index: 100;
     transform: rotate(1.5deg);
 }
 .huge-text {
     position: absolute;
-    top: 168px;
-    left: 30px;
+    top: 178px;
 }
 /* the part of the splash with the button */
 .header-direction {
@@ -89,7 +93,8 @@ h1 {
     left: 0px;
     right: 0px;
     margin: auto;
-    padding-right: 60%;
+    padding-right: 65%;
+    padding-left: 5%;
 }
 .header-smalltext {
     font-size: 30px;
