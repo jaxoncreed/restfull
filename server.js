@@ -104,7 +104,7 @@ server.get('/auth/github/callback',
     }
 );
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 server.listen(port);
 console.log('Application listening on port ' + port);
 
